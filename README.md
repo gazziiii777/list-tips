@@ -48,3 +48,25 @@ print(numbers)
 ```
 
 ![.split(".")](images/split2.png)
+
+### Пример работы метода `split()` со словорями
+
+Предположим, у нас есть строка, представляющая пары ключ-значение, разделенные символом `=`:
+
+```python
+input_string = "name=John age=30 occupation=Engineer"
+```
+Мы можем использовать `split()` для создания словаря:
+```python 
+data = {}
+for pair in input_string.split():
+    key, value = pair.split('=')
+    data[key] = value
+
+print(data)
+```
+
+Результат:
+```python
+{'name': 'John', 'age': '30', 'occupation': 'Engineer'}
+```
