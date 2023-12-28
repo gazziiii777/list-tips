@@ -1,6 +1,18 @@
-# Cтроковые методы
-+ Метод `split()`
-+ Метод `join()` 
+# Методы списков
+
++ Метод `split()` - _Строковый метод_
++ Метод `join()` - _Строковый метод_
++ Метод `insert()`
++ Метод `index()`
++ Метод `remove()`
++ Метод `pop()`
++ Метод `reverse()`
++ Метод `count()`
++ Метод `clear()`
++ Метод `copy()`
++ Метод `sort()`
++ Метод `combinations()` - _Из библиотеки itertools_
+
 
 ## Метод split()
 
@@ -70,3 +82,4 @@ print(data)
 ```python
 {'name': 'John', 'age': '30', 'occupation': 'Engineer'}
 ```
+
