@@ -1,2 +1,6 @@
 .idea
 venv
+input
+log.log
+core/__pycache__
+core/handlers/__pycache__
