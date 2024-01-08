@@ -1,20 +1,20 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
+from core.handlers.basic import get_start
+from core.settings import settings
 
-BOT_TOKEN = ''
-
-bot = Bot(token=BOT_TOKEN, parse_mode='HTML')
+bot = Bot(token=settings.bots.bot_token, parse_mode='HTML')
 
 dp = Dispatcher()
 
 
 async def start_bot():
-    await bot.send_message(chat_id='', text='Бот запущен')
+    await bot.send_message(chat_id=settings.bots.admin_id, text='Бот запущен')
 
 
 async def stop_bot():
-    await bot.send_message(chat_id='', text='Бот остановлен')
+    await bot.send_message(chat_id=settings.bots.admin_id, text='Бот остановлен')
 
 
 async def main():
@@ -22,7 +22,8 @@ async def main():
                         format="%(asctime)s %(levelname)s %(message)s")
 
     dp.startup.register(start_bot)  # Отправляет сообщение админу когда бот запускается
-    dp.shutdown.register(start_bot)  # Отправляет сообщение админу когда бот останавлявается
+    dp.shutdown.register(stop_bot)  # Отправляет сообщение админу когда бот останавлявается
+    dp.message.register(get_start)
     try:
         await dp.start_polling(bot)
     finally:
