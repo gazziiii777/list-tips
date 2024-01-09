@@ -4,3 +4,6 @@ input
 log.log
 core/__pycache__
 core/handlers/__pycache__
+/__pycache__
+core/filters/__pycache__
+core/utils/__pycache__
