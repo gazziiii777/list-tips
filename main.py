@@ -1,12 +1,9 @@
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher, types
+from core.dispatcher import bot, dp
 from core.handlers.basic import get_start
 from core.settings import settings
-
-bot = Bot(token=settings.bots.bot_token, parse_mode='HTML')
-
-dp = Dispatcher()
+from core.utils.commands import *  # Ипорт всех команд
 
 
 async def start_bot():
@@ -24,6 +21,7 @@ async def main():
     dp.startup.register(start_bot)  # Отправляет сообщение админу когда бот запускается
     dp.shutdown.register(stop_bot)  # Отправляет сообщение админу когда бот останавлявается
     dp.message.register(get_start)
+
     try:
         await dp.start_polling(bot)
     finally:
