@@ -1,7 +1,7 @@
 from aiogram import F
 from aiogram.types import CallbackQuery
 from core.dispatcher import dp
-from core.keyboards import main_menu_keyboard, contact_the_admin_keyboard
+from core.keyboards import main_menu_keyboard, contact_the_admin_keyboard, disk_keyboard
 
 
 @dp.callback_query(F.data == "main_menu")
@@ -15,6 +15,15 @@ async def main_menu(callback: CallbackQuery):
     await callback.message.edit_text(
         text="типо главное меню",
         reply_markup=main_menu_keyboard.keyboard
+    )
+
+
+@dp.callback_query(F.data == "diskooo")
+async def disk(callback: CallbackQuery):
+    # После нажатия на кнопку текст меняется
+    await callback.message.edit_text(
+        text="ривет если ты хочешь написать письмо адмиину указать свою проблему",
+        reply_markup=disk_keyboard.keyboard
     )
 
 
