@@ -3,7 +3,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 # Создаем объекты инлайн-кнопок
 buttons = [
     [
-        InlineKeyboardButton(text='Мой диск', callback_data='diskooo')
+        InlineKeyboardButton(text='Мой диск', callback_data='disk')
     ],
     [
         InlineKeyboardButton(text='Документация Telegram Bot API', url='https://core.telegram.org/bots/api')
