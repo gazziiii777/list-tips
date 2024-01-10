@@ -6,8 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter
 
 from core.dispatcher import dp
-from core.keyboards import start_keyboard, contact_the_admin_keyboard, main_menu_keyboard
-from core.admin_panel.commands_admin import cmd_admin  # Подключение админ панели
+from core.keyboards import start_keyboard, support_keyboard, main_menu_keyboard
 from core.handlers.callback import FSMContact  # Подключил callback`и
 
 
@@ -42,7 +41,7 @@ async def process_name_sent(message: Message, state: FSMContext):
                             answer=False)
     await message.answer(
         text=f'<b>Проверь свое письмо перед отправкой администратору:</b>\n{message.text}',
-        reply_markup=contact_the_admin_keyboard.keyboard
+        reply_markup=support_keyboard.keyboard
     )
 
 

@@ -18,10 +18,13 @@ buttons_1 = [
 
 buttons_2 = [
     [
+        InlineKeyboardButton(text='Tехподдержка', callback_data='support')
+    ],
+    [
         InlineKeyboardButton(text='Назад', callback_data='main_menu')
     ],
 ]
 
 # Создаем объект инлайн-клавиатуры
 keyboard = InlineKeyboardMarkup(inline_keyboard=buttons_1)
-back = InlineKeyboardMarkup(inline_keyboard=buttons_2)
+contact = InlineKeyboardMarkup(inline_keyboard=buttons_2)

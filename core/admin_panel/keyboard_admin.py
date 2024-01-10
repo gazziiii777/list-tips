@@ -6,7 +6,13 @@ buttons_1 = [
         InlineKeyboardButton(text="Рассылка всем пользователям бота", callback_data="distribution_bot")
     ],
     [
-        InlineKeyboardButton(text='Документация Telegram Bot API', url='https://core.telegram.org/bots/api')
+        InlineKeyboardButton(text='Вопросы', callback_data="send_questions")
+    ],
+    [
+        InlineKeyboardButton(text='Прислать логи', callback_data="send_logs")
+    ],
+    [
+        InlineKeyboardButton(text='Прислать все бд', callback_data="send_db")
     ],
 ]
 
@@ -16,6 +22,9 @@ buttons_2 = [
     ],
     [
         InlineKeyboardButton(text="Потом", callback_data="not_now")
+    ],
+    [
+        InlineKeyboardButton(text="Удалить вопрос", callback_data="delete_question")
     ],
 ]
 

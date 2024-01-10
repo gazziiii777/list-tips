@@ -3,6 +3,8 @@ import logging
 from core.handlers.basic import get_start
 from core.settings import settings
 from core.dispatcher import bot
+from core.admin_panel.commands_admin import cmd_admin  # Подключение админ панели
+from core.admin_panel.callback_admin import not_now
 from core.handlers.commands import *  # Ипорт всех команд
 
 
