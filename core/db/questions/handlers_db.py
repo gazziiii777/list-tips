@@ -8,6 +8,7 @@ async def questions_add_db(data_message_for_admin):
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
             message_text TEXT,
+            username TEXT,
             answer BOOLEAN
         )
     ''')
@@ -18,15 +19,17 @@ async def questions_add_db(data_message_for_admin):
     # Получение данных из state
     user_id = data_message_for_admin.get('id')
     message_text = data_message_for_admin.get('text')
+    username = data_message_for_admin.get('username')
     answer = data_message_for_admin.get('answer')
 
-    # Вставка данных в базу данных
-    cursor.execute('''
-        INSERT INTO your_table_name (user_id, message_text, answer)
-        VALUES (?, ?, ?)
-    ''', (user_id, message_text, answer))
+    if user_id is not None and message_text is not None:
+        # Вставка данных в базу данных
+        cursor.execute('''
+            INSERT INTO your_table_name (user_id, message_text, username, answer)
+            VALUES (?, ?, ?, ?)
+        ''', (user_id, message_text, username, answer))
 
-    # Сохранение изменений в базе данных
-    conn.commit()
+        # Сохранение изменений в базе данных
+        conn.commit()
 
     conn.close()

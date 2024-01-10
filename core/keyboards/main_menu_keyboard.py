@@ -1,7 +1,7 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # Создаем объекты инлайн-кнопок
-buttons = [
+buttons_1 = [
     [
         InlineKeyboardButton(text='Мой диск', callback_data='disk')
     ],
@@ -16,5 +16,12 @@ buttons = [
     ],
 ]
 
+buttons_2 = [
+    [
+        InlineKeyboardButton(text='Назад', callback_data='main_menu')
+    ],
+]
+
 # Создаем объект инлайн-клавиатуры
-keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+keyboard = InlineKeyboardMarkup(inline_keyboard=buttons_1)
+back = InlineKeyboardMarkup(inline_keyboard=buttons_2)

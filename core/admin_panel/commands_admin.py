@@ -2,7 +2,7 @@ from core.dispatcher import dp
 from aiogram.filters import Command
 from aiogram.types import Message
 from core.settings import settings
-from core.admin_panel.admin_keyboard import admin_keyboard  # Клавиатура для администратора
+from core.admin_panel.keyboard_admin import admin_keyboard  # Клавиатура для администратора
 
 
 @dp.message(Command('admin'))

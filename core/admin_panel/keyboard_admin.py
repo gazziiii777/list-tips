@@ -10,9 +10,15 @@ buttons_1 = [
     ],
 ]
 
-
-
-
+buttons_2 = [
+    [
+        InlineKeyboardButton(text="Ответить пользователю", callback_data="send_answer")
+    ],
+    [
+        InlineKeyboardButton(text="Потом", callback_data="not_now")
+    ],
+]
 
 # Создаем объект инлайн-клавиатуры
-admin_keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+admin_keyboard = InlineKeyboardMarkup(inline_keyboard=buttons_1)
+admin_answer = InlineKeyboardMarkup(inline_keyboard=buttons_2)

@@ -6,7 +6,6 @@ from core.dispatcher import bot
 from core.handlers.commands import *  # Ипорт всех команд
 
 
-
 async def start_bot():
     await bot.send_message(chat_id=settings.bots.admin_id, text='Бот запущен')
 

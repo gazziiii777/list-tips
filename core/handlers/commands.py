@@ -1,14 +1,14 @@
 import random
 from aiogram.filters import Command
 from aiogram.types import Message
-from aiogram.fsm.state import default_state, State, StatesGroup
+from aiogram.fsm.state import default_state
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter
 
-from core.dispatcher import dp, storage
+from core.dispatcher import dp
 from core.keyboards import start_keyboard, contact_the_admin_keyboard, main_menu_keyboard
-from core.admin_panel.admin_commands import cmd_admin  # Подключение админ панели
-from core.handlers.callback import main_menu, FSMContact  # Подключил callback`и
+from core.admin_panel.commands_admin import cmd_admin  # Подключение админ панели
+from core.handlers.callback import FSMContact  # Подключил callback`и
 
 
 # Этот хэндлер будет срабатывать на команду /start вне состояний
@@ -38,7 +38,8 @@ async def process_cancel_command_state(message: Message, state: FSMContext):
 @dp.message(StateFilter(FSMContact.message_for_admin))
 async def process_name_sent(message: Message, state: FSMContext):
     # Cохраняем введенное имя в хранилище по ключу "name"
-    await state.update_data(text=message.text)
+    await state.update_data(id=message.from_user.id, text=message.text, username=message.from_user.username,
+                            answer=False)
     await message.answer(
         text=f'<b>Проверь свое письмо перед отправкой администратору:</b>\n{message.text}',
         reply_markup=contact_the_admin_keyboard.keyboard
