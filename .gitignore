@@ -1,7 +1,7 @@
 .idea
 venv
 input
-log.log
+bot_log.log
 core/__pycache__
 core/handlers/__pycache__
 /__pycache__
@@ -11,3 +11,4 @@ core/keyboards/__pycache__
 core/admin_panel/__pycache__
 core/db/__pycache__
 core/db/questions/__pycache__
+core/db/databases/*

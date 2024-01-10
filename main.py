@@ -15,7 +15,7 @@ async def stop_bot():
 
 
 async def main():
-    logging.basicConfig(level=logging.INFO, filename="log.log", filemode="w",
+    logging.basicConfig(level=logging.INFO, filename="bot_log.log", filemode="w",
                         format="%(asctime)s %(levelname)s %(message)s")
 
     dp.startup.register(start_bot)  # Отправляет сообщение админу когда бот запускается
