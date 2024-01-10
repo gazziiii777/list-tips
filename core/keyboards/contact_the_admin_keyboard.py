@@ -3,10 +3,10 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 # Создаем объекты инлайн-кнопок
 buttons = [
     [
-        InlineKeyboardButton(text="Написать письмо", callback_data="contest")
+        InlineKeyboardButton(text="Отправить", callback_data="send_the_admin")
     ],
     [
-        InlineKeyboardButton(text='Назад', callback_data="main_menu")
+        InlineKeyboardButton(text='Переписать', callback_data="contact_the_admin")
     ],
 ]
 

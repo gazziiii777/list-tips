@@ -6,9 +6,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter
 
 from core.dispatcher import dp, storage
-from core.keyboards import start_keyboard
+from core.keyboards import start_keyboard, contact_the_admin_keyboard, main_menu_keyboard
 from core.admin_panel.admin_commands import cmd_admin  # Подключение админ панели
-from core.handlers.callback import main_menu  # Подключил callback`и
+from core.handlers.callback import main_menu, FSMContact  # Подключил callback`и
 
 
 # Этот хэндлер будет срабатывать на команду /start вне состояний
@@ -26,12 +26,23 @@ async def cmd_start(message: Message):
 @dp.message(Command('cancel'), ~StateFilter(default_state))
 async def process_cancel_command_state(message: Message, state: FSMContext):
     await message.answer(
-        text='Вы вышли из машины состояний\n\n'
-             'Чтобы снова перейти к заполнению анкеты - '
-             'отправьте команду /fillform'
+        "Приветсвенное сообщение",
+        reply_markup=main_menu_keyboard.keyboard,
     )
     # Сбрасываем состояние и очищаем данные, полученные внутри состояний
     await state.clear()
+
+
+# Этот хэндлер будет срабатывать, если введено корректное имя
+# и переводить в состояние ожидания ввода возраста
+@dp.message(StateFilter(FSMContact.message_for_admin))
+async def process_name_sent(message: Message, state: FSMContext):
+    # Cохраняем введенное имя в хранилище по ключу "name"
+    await state.update_data(text=message.text)
+    await message.answer(
+        text=f'<b>Проверь свое письмо перед отправкой администратору:</b>\n{message.text}',
+        reply_markup=contact_the_admin_keyboard.keyboard
+    )
 
 
 @dp.message()

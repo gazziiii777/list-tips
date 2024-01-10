@@ -1,7 +1,8 @@
 from aiogram import F
+from aiogram.filters import StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import default_state, State, StatesGroup
-from aiogram.types import CallbackQuery
+from aiogram.types import CallbackQuery, Message
 
 from core.dispatcher import dp
 from core.keyboards import main_menu_keyboard, disk_keyboard, my_photo_and_video_keyboard
@@ -39,23 +40,22 @@ async def disk(callback: CallbackQuery):
     )
 
 
+# Создаем "базу данных" пользователей
+user_dict: dict[int, dict[str, str | int | bool]] = {}
+
+
 # Cоздаем класс StatesGroup для нашей машины состояний
-class FSMFillForm(StatesGroup):
+class FSMContact(StatesGroup):
     # Создаем экземпляры класса State, последовательно
     # перечисляя возможные состояния, в которых будет находиться
     # бот в разные моменты взаимодействия с пользователем
-    fill_name = State()  # Состояние ожидания ввода имени
-    fill_age = State()  # Состояние ожидания ввода возраста
-    fill_gender = State()  # Состояние ожидания выбора пола
-    upload_photo = State()  # Состояние ожидания загрузки фото
-    fill_education = State()  # Состояние ожидания выбора образования
-    fill_wish_news = State()  # Состояние ожидания выбора получать ли новости
+    message_for_admin = State()  # Состояние ожидания ввода имени
 
 
 @dp.callback_query(F.data == "contact_the_admin")
 async def contact_the_admin(callback: CallbackQuery, state: FSMContext):
     await callback.message.edit_text(
-        text="ривет если ты хочешь написать письмо адмиину указать свою проблему",
+        text="Привет, тут ты можешь связаться с админом, для отмены напиши /cancel",
     )
     # Устанавливаем состояние ожидания ввода имени
-    await state.set_state(FSMFillForm.fill_name)
+    await state.set_state(FSMContact.message_for_admin)
