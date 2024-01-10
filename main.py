@@ -1,9 +1,10 @@
 import asyncio
 import logging
-from core.dispatcher import bot, dp
 from core.handlers.basic import get_start
 from core.settings import settings
-from core.utils.commands import *  # Ипорт всех команд
+from core.dispatcher import bot
+from core.handlers.commands import *  # Ипорт всех команд
+
 
 
 async def start_bot():
